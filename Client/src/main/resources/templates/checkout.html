@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments::head">
+
+</head>
+<body>
+<div th:replace="fragments::main-top">
+</div>
+<header th:replace="fragments::main-header">
+</header>
+<div th:replace="fragments::top-search">
+</div>
+<div class="all-title-box" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Checkout</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>Billing address</h3>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">Username:</label>
+                        <p th:text="${client.username}" id="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone">Phone Number:</label>
+                        <p id="phone" th:text="${client.phoneNumber}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address">Address:</label>
+                        <p th:text="${client.address + ' ' + client.city + ' ' + client.country}" id="address">
+                    </div>
+                    <hr class="mb-4">
+                    <hr class="mb-4">
+                    <div class="title"><span>Payment Methods</span></div>
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
+                                   required>
+                            <label class="custom-control-label" for="debit">Credit Cart</label>
+                        </div>
+                    </div>
+                    <hr class="mb-1">
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="col-md-12 col-lg-12">
+                    <div class="odr-box">
+                        <div class="title-left">
+                            <h3>Shopping cart</h3>
+                        </div>
+                        <div class="rounded p-2 bg-light">
+                            <div class="media mb-2 border-bottom" th:each="item : ${cart.cartItem}">
+                                <div class="media-body"><a
+                                        th:text="${item.workout.name}"> </a>
+                                    <div class="small text-muted">Price: $[[${item.workout.salePrice}]] <span
+                                            class="mx-2">|</span> Month: [[${item.quantity}]] <span
+                                            class="mx-2">|</span> Subtotal: $[[${cart.totalPrices}]]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-12">
+                    <div class="order-box">
+                        <div class="title-left">
+                            <h2><b>Your order</b></h2>
+                        </div>
+                        <div class="d-flex">
+                            <div class="font-weight-bold">Workout</div>
+                            <div class="ml-auto font-weight-bold">Total</div>
+                        </div>
+                        <hr class="my-1">
+                        <div class="d-flex">
+                            <h4>Sub Total</h4>
+                            <div class="ml-auto font-weight-bold" th:text="${ '$' + cart.totalPrices}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex shopping-box"><a th:href="@{/save-order}" class="ml-auto btn hvr-hover">Place
+                    Order</a></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<footer th:replace="fragments::footer">
+</footer>
+<div th:replace="fragments::script"></div>
+</body>
+
+</html>

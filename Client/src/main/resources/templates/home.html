@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head th:replace="fragments::head">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+
+<body>
+<div th:replace="fragments::main-top">
+</div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header th:replace="fragments::main-header">
+</header>
+<!-- End Main Top -->
+
+<!-- Start Top Search -->
+<div th:replace="fragments::top-search">
+</div>
+<!-- End Top Search -->
+
+<!-- Start Slider -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>GymStarter HomePage</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item active">Home</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Slider -->
+
+
+<!-- Start About Page  -->
+<div class="about-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="banner-frame"><img class="img-fluid" src="images/work1.jpg" alt=""/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="noo-sh-title-top">We are <span>Gym-Starter</span></h2>
+                <p>A training program is a plan that makes your workouts stop being chaotic and become more
+                    understandable and consistent.
+                    With the right training program, you can achieve various goals: lose weight, gain muscle mass, etc.
+                    Of course, different programs are needed for different purposes.
+                    And they are compiled taking into account the characteristics of your body and state of health.</p>
+                <p>What is the main rule of economy in a fitness club if you decide to exercise regularly, as is
+                    customary, and not once a month?
+                    That's right - buying a subscription. The subscription represents the required number of visits to
+                    the gym for an amount less than if you paid for your workouts one-time.</p>
+                <a class="btn hvr-hover" href="#">Read More</a>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We Support</h3>
+                    <p>The application provides support to the user throughout the training process, which will help
+                        them achieve their goals. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We are Professional</h3>
+                    <p>Here, guests are invited on an adventure in great food. We will create a great experience for
+                        you.
+                        We deliver more than just incredible food: We create remarkable experiences.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We are for safety</h3>
+                    <p>The application provides safe and effective exercises that will help the user achieve the desired
+                        results without the risk of injury and damage. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Feed  -->
+
+
+<!-- End Feed  -->
+
+
+<!-- Start Footer  -->
+<footer th:replace="fragments::footer">
+</footer>
+
+
+<!-- ALL JS FILES -->
+<div th:replace="fragments::script"></div>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+
+<head th:replace="fragments::head">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+<body>
+<div th:replace="fragments::main-top">
+</div>
+<header th:replace="fragments::main-header">
+</header>
+<div th:replace="fragments::top-search">
+</div>
+<div class="all-title-box" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Subscription</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item active">Subscription</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                    <div th:replace="fragments::nav-workout">
+                    </div>
+                    <!--all workout-->
+                    <div class="container" th:each="subscription : ${subscriptions}">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="title-all text-center">
+                                    <h1 th:text="${subscription.name}"></h1>
+                                    <p>No Gain No Pain</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="special-menu text-center">
+                                    <div class="button-group filter-button-group">
+                                        <button class="active" data-filter="*">All</button>
+                                        <button data-filter=".best-seller">Best seller</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row special-list">
+                            <div class="col-lg-3 col-md-6 special-grid" th:each="workout : ${workouts}"
+                                 th:if="${workout.subscription.id == subscription.id}">
+                                <div class="products-single fix">
+                                    <div class="box-img-hover">
+                                        <img th:src="@{'data:image/jpeg;base64,' + ${workout.image}}" class="img-fluid"
+                                             alt="Image">
+                                        <div class="mask-icon">
+                                            <ul>
+                                                <li><a th:href="@{/find-workout/{id}(id = ${workout.id})}"
+                                                       data-toggle="tooltip" data-placement="right"
+                                                       title="View"><i class="fas fa-eye"></i></a></li>
+                                            </ul>
+                                            <a class="cart" href="#">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="why-text">
+                                        <h4 th:text="${workout.name}"></h4>
+                                        <h5 th:text="'$' + ${workout.salePrice}"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="workout-subscription">
+                    <div class="search-workout">
+                        <form action="#">
+                            <input class="form-control" placeholder="Search here..." type="text">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h3>Subscriptions</h3>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men"
+                             data-children=".sub-men" th:each="subscriptionDto : ${subscriptionDtoList}">
+                            <a th:href="@{/workouts-in-subscription/{id}(id = ${subscriptionDto.subscriptionId})}"
+                               class="list-group-item list-group-item-action">[[${subscriptionDto.subscriptionName}]]
+                                <small class="text-muted">([[${subscriptionDto.numberOfWorkout}]])</small></a>
+                        </div>
+                    </div>
+                    <div class="filter-price-left">
+                        <div class="title-left">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments::footer">
+</footer>
+<div th:replace="fragments::script"></div>
+</body>
+
+</html>
